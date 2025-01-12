@@ -48,3 +48,5 @@ print(f"Redcution 2: {maxReductuinDB}, diff form goal: {abs(maxReductuinDB-goalL
 resultFile = open("Results.txt",mode="w",encoding="utf-8")
 resultFile.write(f"Redcution 1: {minReductuinDB}, diff form goal: {abs(minReductuinDB-goalHigh)}")
 resultFile.write(f"\nRedcution 2: {maxReductuinDB}, diff form goal: {abs(maxReductuinDB-goalLow)}")
+resultFile.write(f"\nMax min voltage values {max(v2HighVolt)} {max(v2LowVolt)}")
+resultFile.write(f"\nGoal values used {goalLow} {goalHigh}")
