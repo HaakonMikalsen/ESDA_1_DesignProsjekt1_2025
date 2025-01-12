@@ -55,6 +55,12 @@ while True:
     else:
         endIndex-=1
 
+
+
+def sinFunc(t):
+    t = np.array(t)
+    return np.sin(t*2*np.pi*1000)
+
 v1Volt = v1Volt[startIndex:endIndex]
 tSecond = tSecond[startIndex:endIndex]
 v2HighVolt = v2HighVolt[startIndex:endIndex]
@@ -62,16 +68,23 @@ v2LowVolt = v2LowVolt[startIndex:endIndex]
 
 
 
-
 for t in tSecond:
     tMovedMilliSecond.append((t+abs(tSecond[0]))*1000)
 
+goalHigh = sinFunc(tSecond)*5*0.501187
+goalLow = sinFunc(tSecond)*5*0.1778279
 
+plt.style.use("seaborn-v0_8-dark")
+# plt.style.use("seaborn-v0_8-poster")
+# plt.style.use("seaborn-v0_8-talk")
 plt.axhline(y = 0,color="black",linestyle="--")
 plt.axvline(x=0, color="black",linestyle="--")
 plt.plot(tMovedMilliSecond,v1Volt,label="V1(t)")
 plt.plot(tMovedMilliSecond,v2HighVolt,label="V2(t)(minst demping)")
 plt.plot(tMovedMilliSecond,v2LowVolt,label="V2(t)(maks demping)")
+# plt.plot(tMovedMilliSecond,goalHigh,linestyle="dotted")
+# plt.plot(tMovedMilliSecond,goalLow,linestyle="dotted",marker='o',markersize=0.5)
+
 plt.grid()
 plt.yticks(np.linspace(-5,5,11))
 plt.gca().yaxis.set_major_formatter(mticker.FormatStrFormatter('%.1f V'))
@@ -79,5 +92,6 @@ plt.gca().xaxis.set_major_formatter(mticker.FormatStrFormatter('%.1f ms'))
 plt.title("Måling av V1(t) sammen med ytterpunktene for V2(t)")
 plt.xlabel("Tid[ms]")
 plt.ylabel("Spenning[V]")
-plt.legend() 
+plt.legend(frameon=True,edgecolor="dimgray",facecolor="lavender")
+plt.savefig(fname="Plot 1", dpi=1000) 
 plt.show()
