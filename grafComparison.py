@@ -74,9 +74,6 @@ for t in tSecond:
 goalHigh = sinFunc(tSecond)*5*0.501187
 goalLow = sinFunc(tSecond)*5*0.1778279
 
-plt.style.use("seaborn-v0_8-dark")
-# plt.style.use("seaborn-v0_8-poster")
-# plt.style.use("seaborn-v0_8-talk")
 plt.axhline(y = 0,color="black",linestyle="--")
 plt.axvline(x=0, color="black",linestyle="--")
 plt.plot(tMovedMilliSecond,v1Volt,label="V1(t)")
